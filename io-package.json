@@ -1,0 +1,101 @@
+{
+    "common": {
+        "name": "roborock",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Roborock",
+        "titleLang": {
+            "en": "Roborock",
+            "de": "Roborock",
+            "ru": "Роборок",
+            "pt": "Roborock",
+            "nl": "Roborock",
+            "fr": "Roborock",
+            "it": "Roborock",
+            "es": "roborock",
+            "pl": "Roborock",
+            "zh-cn": "石头"
+        },
+        "desc": {
+            "en": "Roborock",
+            "de": "Roborock",
+            "ru": "Роборок",
+            "pt": "Roborock",
+            "nl": "Roborock",
+            "fr": "Roborock",
+            "it": "Roborock",
+            "es": "roborock",
+            "pl": "Roborock",
+            "zh-cn": "石头"
+        },
+        "authors": ["Kai van Nuis <kai@vannuis.de>"],
+        "keywords": ["roborock"],
+        "license": "Apache-2.0",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "roborock.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ka-vaNu/ioBroker.roborock/main/admin/roborock.png",
+        "readme": "https://github.com/ka-vaNu/ioBroker.roborock/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "household",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "materialize"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.0.0"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
