@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("node:crypto");
 const axios = require("axios");
+const iotMqtt = require("./lib/iotMqtt");
 
 // eslint-disable-next-line prefer-const
 let systemDictionary = {};
@@ -75,6 +76,7 @@ class Roborock extends utils.Adapter {
 		// Get userdata and homedata
 		if (await this.loginGetUserdata()) {
 			await this.getRoborockUserHomedata();
+			await iotMqtt.init(this);
 		} else {
 			this.log.error("Login failed");
 		}
@@ -269,6 +271,8 @@ class Roborock extends utils.Adapter {
 						for (const itm of prod.schema) {
 							this.log.debug(`Create state for ${prod.id}.info.${itm.code} ...`);
 							await this.setObjectNotExistsAsync(`${prod.id}.info.${itm.code}`, { type: "state", common: { name: `${itm.code}`, type: "string", role: "info", read: true, write: false, def: "" }, native: {} });
+							await this.setStateAsync(`${prod.id}.info.${itm.code}`, { val: `${prod.id}.info.${itm.code}`, ack: true });
+
 						}
 					}
 
